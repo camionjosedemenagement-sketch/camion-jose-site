@@ -1,13 +1,17 @@
-je vais te donne mon code complet , et j'aimerais savoir si tu peux le mettre dans mon code complet :<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Camion José Transport & Déménagement</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<!-- Lightbox CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplelightbox/dist/simple-lightbox.min.css">
 <style>
 /* --- RESET ET BASE --- */
-* { margin:0; padding:0; box-sizing:border-box; font-family:Arial, sans-serif; }
-body { line-height:1.5; background:#f5f5f5; }
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+body { line-height:1.5; background:#f5f5f5; scroll-behavior: smooth; }
 /* --- NAVIGATION --- */
 nav {
   position: fixed;
@@ -21,10 +25,9 @@ nav ul {
   display:flex;
   justify-content:center;
   padding: 10px 0;
+  flex-wrap: wrap;
 }
-nav ul li {
-  margin: 0 15px;
-}
+nav ul li { margin: 0 15px; }
 nav ul li a {
   color: white;
   text-decoration:none;
@@ -32,15 +35,13 @@ nav ul li a {
   font-size:16px;
   transition:0.3s;
 }
-nav ul li a:hover {
-  color: yellow;
-}
+nav ul li a:hover { color: yellow; }
 /* --- HEADER --- */
 header {
   background:#ffcccc;
   padding:100px 20px 60px;
   text-align:center;
-  margin-top:50px; /* pour que nav fixe ne cache pas */
+  margin-top:50px;
 }
 header h1 { color:#e60000; font-size:32px; margin-bottom:10px; }
 header .sub-title { font-size:18px; margin-bottom:20px; }
@@ -58,13 +59,15 @@ section h2 { color:#e60000; margin-bottom:20px; text-align:center; }
 section p { color:#333; margin-bottom:20px; text-align:center; }
 /* --- SERVICES --- */
 .service-list { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
-.service-item { background:#fff0f0; padding:20px; border-radius:10px; width:300px; text-align:center; box-shadow:0 4px 8px rgba(0,0,0,0.1); }
+.service-item { background:#fff0f0; padding:20px; border-radius:10px; width:300px; text-align:center; box-shadow:0 4px 8px rgba(0,0,0,0.1); transition:0.3s; }
+.service-item:hover { transform:translateY(-5px); }
 .service-item h3 { margin-bottom:10px; }
 .sub-services { text-align:left; margin:10px 0; }
 /* --- SLIDER --- */
 .slider { position:relative; overflow:hidden; margin:10px 0; }
-.slides { display:flex; transition:0.5s; }
+.slides { display:flex; transition:0.5s ease-in-out; }
 .slides img { width:100%; border-radius:10px; }
+/* Boutons slider */
 .slider-btn {
   position:absolute;
   top:50%;
@@ -72,33 +75,32 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
   background:rgba(0,0,0,0.5);
   color:white;
   border:none;
-  font-size:18px;
-  padding:5px 10px;
+  font-size:20px;
+  padding:8px 12px;
   cursor:pointer;
   border-radius:5px;
+  z-index:10;
 }
 .slider-btn.prev { left:5px; }
 .slider-btn.next { right:5px; }
 /* --- TESTIMONIALS --- */
 .testimonial-videos { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
-.testimonial-videos video { width:300px; height:180px; border-radius:10px; }
+.testimonial-videos video { width:300px; height:180px; border-radius:10px; box-shadow:0 6px 12px rgba(0,0,0,0.1); transition: transform 0.3s; }
+.testimonial-videos video:hover { transform:scale(1.05); }
 /* --- NOS RÉALISATIONS --- */
 .realisations p { text-align:center; margin-bottom:30px; }
 .videos-container { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; }
-.videos-container video {
-  width:300px;
-  height:180px;
-  border-radius:10px;
-  box-shadow:0 6px 12px rgba(0,0,0,0.1);
-  transition:0.3s;
-}
-.videos-container video:hover { transform:scale(1.05); }
+.videos-container video { width:300px; height:180px; border-radius:10px; box-shadow:0 6px 12px rgba(0,0,0,0.1); transition: transform 0.3s; opacity:0; }
+.videos-container video.animate { opacity:1; transform:translateY(0); transition: all 0.6s ease-in-out; }
+.videos-container video.hidden { transform:translateY(50px); }
 /* --- GALERIE --- */
 .gallery-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; }
-.gallery-item img { width:100%; border-radius:10px; }
+.gallery-item img { width:100%; border-radius:10px; cursor:pointer; transition:0.3s; }
+.gallery-item img:hover { transform:scale(1.05); }
 /* --- REVIEWS --- */
 .review-container { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
-.review { background:#fff0f0; padding:20px; border-radius:10px; width:300px; text-align:center; }
+.review { background:#fff0f0; padding:20px; border-radius:10px; width:300px; text-align:center; transition:0.3s; }
+.review:hover { transform:translateY(-5px); }
 /* --- DEVIS --- */
 .devis-form { max-width:500px; margin:0 auto; }
 .devis-form input, .devis-form select, .devis-form textarea, .devis-form button {
@@ -117,6 +119,7 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
   right:20px;
   padding:10px 15px;
   color:white;
+  background:#25D366;
   border-radius:50px;
   text-decoration:none;
   font-size:18px;
@@ -125,6 +128,13 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
 }
 /* --- MAP --- */
 .map-container iframe { border:0; border-radius:10px; width:100%; height:300px; }
+/* --- RESPONSIVE --- */
+@media (max-width:768px){
+  .service-list { flex-direction: column; }
+  .slider-btn { font-size:16px; padding:6px 10px; }
+  .gallery-grid { grid-template-columns: repeat(auto-fit,minmax(120px,1fr)); }
+  .testimonial-videos video, .videos-container video { width:100%; height:auto; }
+}
 </style>
 </head>
 <body>
@@ -138,11 +148,13 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
 <li><a href="#contact">Contact</a></li>
 </ul>
 </nav>
+
 <header id="header">
 <h1>Camion José Transport & Déménagement</h1>
 <p class="sub-title">Service rapide et sécurisé - 034 42 913 61</p>
 <a href="tel:0344291361" class="btn-call">Appeler maintenant</a>
 </header>
+
 <section class="services" id="services">
 <h2>Nos Services</h2>
 <div class="service-list">
@@ -177,47 +189,48 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
   </div>
 </div>
 </section>
+
 <section class="testimonials" id="testimonials">
 <h2>Témoignages de nos clients</h2>
 <div class="testimonial-videos">
   <video controls>
     <source src="video.mp4" type="video/mp4">
-    Votre navigateur ne supporte pas la lecture de vidéos.
   </video>
   <video controls>
     <source src="video2.mp4" type="video/mp4">
-    Votre navigateur ne supporte pas la lecture de vidéos.
   </video>
   <video controls>
     <source src="v3.mp4" type="video/mp4">
-    Votre navigateur ne supporte pas la lecture de vidéos.
   </video>
 </div>
 </section>
+
 <section id="realisations" class="realisations">
 <h2>🎬 Nos réalisations</h2>
 <p>Découvrez notre équipe en pleine action lors de nos déménagements.</p>
 <div class="videos-container">
-  <video controls>
+  <video class="hidden" controls>
     <source src="complet.mp4" type="video/mp4">
   </video>
-  <video controls>
+  <video class="hidden" controls>
     <source src="vid.mp4" type="video/mp4">
   </video>
-  <video controls>
+  <video class="hidden" controls>
     <source src="vdemballage.mp4" type="video/mp4">
   </video>
 </div>
 </section>
+
 <section class="gallery" id="gallery">
 <h2>Galerie de nos camions</h2>
 <div class="gallery-grid">
-<div class="gallery-item"><img src="jok.jpeg" alt="Camion 1"></div>
-<div class="gallery-item"><img src="gomme.jpeg" alt="Camion 2"></div>
-<div class="gallery-item"><img src="DOUBLE.jpeg" alt="Camion 3"></div>
-<div class="gallery-item"><img src="410.jpeg" alt="Camion 4"></div>
+  <div class="gallery-item"><a href="jok.jpeg"><img src="jok.jpeg" alt="Camion 1"></a></div>
+  <div class="gallery-item"><a href="gomme.jpeg"><img src="gomme.jpeg" alt="Camion 2"></a></div>
+  <div class="gallery-item"><a href="DOUBLE.jpeg"><img src="DOUBLE.jpeg" alt="Camion 3"></a></div>
+  <div class="gallery-item"><a href="410.jpeg"><img src="410.jpeg" alt="Camion 4"></a></div>
 </div>
 </section>
+
 <section class="reviews">
 <h2>⭐ Avis de nos clients</h2>
 <div class="review-container">
@@ -235,6 +248,7 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
 </div>
 </div>
 </section>
+
 <section class="devis" id="devis">
 <h2>📩 Demander un devis</h2>
 <div class="devis-form">
@@ -254,17 +268,23 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
 <input type="date" name="date" required>
 <textarea name="message" placeholder="Détails (meubles, étage, etc...)"></textarea>
 <button type="submit">Envoyer la demande</button>
+<div class="confirm-message">Votre demande a été envoyée avec succès !</div>
 </form>
 </div>
 </section>
+
 <section class="contact" id="contact">
 <h2>Contactez-nous</h2>
 <p>📞 034 42 913 61</p>
 <p>✉️ camionjosedemenagement@gmail.com</p>
 <p>📍 Antananarivo, Madagascar</p>
 </section>
+
 <a href="#devis" class="whatsapp-btn" title="Demander un devis">📩 Devis</a>
+
 <!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/simplelightbox/dist/simple-lightbox.jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 // Slider déménagement
 document.querySelectorAll('.slider').forEach(slider => {
@@ -283,6 +303,23 @@ document.querySelectorAll('.slider').forEach(slider => {
     slider.querySelector('.next').addEventListener('click', ()=> showSlide(slideIndex+1));
     setInterval(()=> showSlide(slideIndex+1), 6000);
 });
+
+// Lightbox galerie
+$(document).ready(function(){
+  var lightbox = $('.gallery-grid a').simpleLightbox();
+});
+
+// Animation vidéos réalisations au scroll
+const videos = document.querySelectorAll('.videos-container video');
+function animateVideos(){
+  const triggerBottom = window.innerHeight * 0.85;
+  videos.forEach(video => {
+    const videoTop = video.getBoundingClientRect().top;
+    if(videoTop < triggerBottom){ video.classList.add('animate'); video.classList.remove('hidden'); }
+  });
+}
+window.addEventListener('scroll', animateVideos);
+animateVideos(); // pour les vidéos déjà visibles
 </script>
 </body>
 </html>
