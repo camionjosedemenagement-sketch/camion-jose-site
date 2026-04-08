@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Camion José Transport & Déménagement</title>
+<style>
+html { scroll-behavior: smooth; }
+body{font-family:Arial,sans-serif;margin:0;padding:0;text-align:center;background-color:#f2f2f2;}
+nav{position:fixed;top:0;width:100%;z-index:1000;background-color:rgba(230,0,0,0.85);box-shadow:0px 2px 5px rgba(0,0,0,0.3);}
+nav ul{list-style:none;margin:0;padding:10px 0;display:flex;justify-content:center;gap:20px;}
+nav ul li a{color:white;text-decoration:none;font-weight:bold;padding:10px 20px;border-radius:5px;transition:all .3s;}
+nav ul li a:hover{background-color:#b30000;transform:scale(1.05);}
+header{position: relative;height:400px;overflow:hidden;color:white;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:15px;}
+header::before{content:"";background-image:url('jok.jpeg');background-size:cover;background-position:center;position:absolute;top:0;left:0;width:100%;height:100%;transform:translateZ(0);will-change:transform;z-index:-1;}
+header h1{font-size:2.2em;color:#fff;text-shadow:2px 2px 8px rgba(0,0,0,.5);margin:0;}
+header .sub-title{font-size:1.2em;color:#fff;text-shadow:1px 1px 5px rgba(0,0,0,.5);margin:0;}
+header .btn-call{display:inline-block;padding:12px 25px;background-color:#e60000;color:white;border-radius:8px;font-weight:bold;transition:all .3s;text-decoration:none;}
+header .btn-call:hover{background-color:#b30000;transform:scale(1.05);}
+
+/* --- Services --- */
+.services{background-color:white;padding:50px 20px;}
+.services h2{color:#e60000;margin-bottom:40px;font-size:1.8em;}
+.service-list{display:flex;justify-content:center;gap:25px;flex-wrap:wrap;}
+.service-item{background-color:#f9f9f9;padding:25px;width:280px;border-radius:12px;box-shadow:0px 6px 12px rgba(0,0,0,.1);transition:all .3s;display:flex;flex-direction:column;align-items:center;gap:15px;}
+.service-item:hover{transform:translateY(-5px);box-shadow:0px 10px 20px rgba(0,0,0,.15);}
+.service-item h3{color:#e60000;}
+.service-item p{font-size:0.95em;}
+.service-item .btn-service{display:inline-block;padding:10px 20px;background-color:#e60000;color:white;border-radius:6px;font-weight:bold;text-decoration:none;transition:all .3s;}
+.service-item .btn-service:hover{background-color:#b30000;transform:scale(1.05);}
+.sub-services{margin-top:15px;text-align:left;width:100%;padding:0 10px;}
+.sub-services li{margin-bottom:10px;font-size:0.9em;}
+
+/* --- Slider pour déménagement --- */
+.slider{position:relative;width:100%;max-width:250px;height:180px;margin-top:10px;overflow:hidden;border-radius:10px;box-shadow:0px 4px 10px rgba(0,0,0,.15);}
+.slides{display:flex;transition:transform 1s ease-in-out;width:300%;height:100%;}
+.slides img{width:100%;height:100%;object-fit:cover;}
+.slider-btn{position:absolute;top:50%;transform:translateY(-50%);background-color:rgba(0,0,0,0.5);color:white;border:none;padding:8px 12px;border-radius:5px;cursor:pointer;font-weight:bold;transition:all .3s;}
+.slider-btn:hover{background-color:rgba(0,0,0,0.8);}
+.prev{left:5px;}
+.next{right:5px;}
+
+/* --- Galerie principale --- */
+.gallery{background-color:white;padding:50px 20px;}
+.gallery h2{color:#e60000;margin-bottom:40px;font-size:1.8em;}
+.gallery-grid{display:flex;justify-content:center;gap:25px;flex-wrap:wrap;}
+.gallery-item{width:260px;overflow:hidden;border-radius:12px;box-shadow:0px 6px 12px rgba(0,0,0,.1);transition:transform .3s,box-shadow .3s;}
+.gallery-item img{width:100%;height:auto;display:block;transition:transform .5s;}
+.gallery-item:hover img{transform:scale(1.1);}
+.gallery-item:hover{box-shadow:0px 10px 20px rgba(0,0,0,.2);}
+
+/* --- Témoignages --- */
+.testimonials{background-color:#f9f9f9;padding:50px 20px;}
+.testimonials h2{color:#e60000;margin-bottom:40px;font-size:1.8em;}
+.testimonial-videos{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;}
+.testimonial-videos video{width:300px;height:180px;border-radius:10px;box-shadow:0px 6px 12px rgba(0,0,0,.1);}
+
+/* --- Contact --- */
+.contact{background-color:#e60000;color:white;padding:50px 20px;}
+.contact h2{margin-bottom:25px;font-size:1.8em;}
+.contact p{margin:8px 0;}
+.contact-form{background-color:white;color:#333;padding:35px 25px;margin-top:30px;border-radius:12px;max-width:520px;margin-left:auto;margin-right:auto;box-shadow:0px 6px 12px rgba(0,0,0,.2);}
+.contact-form input,.contact-form textarea,.contact-form button{width:100%;padding:12px;margin-bottom:18px;border-radius:6px;border:1px solid #ccc;font-size:16px;}
+.contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:#e60000;box-shadow:0 0 5px rgba(230,0,0,.5);}
+.contact-form button{background-color:#e60000;color:white;border:none;cursor:pointer;font-weight:bold;transition:all .3s;}
+.contact-form button:hover{background-color:#b30000;transform:scale(1.05);}
+.confirm-message{display:none;background-color:#d4edda;color:#155724;padding:15px;margin-bottom:15px;border-radius:5px;font-weight:bold;animation:fadeIn 1s ease;}
+@keyframes fadeIn{0%{opacity:0;}100%{opacity:1;}}
+/* 🔥 BOUTON WHATSAPP */
+.whatsapp-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+background-color:#25D366;
+color:white;
+font-size:28px;
+padding:15px;
+border-radius:50%;
+text-decoration:none;
+box-shadow:0 4px 10px rgba(0,0,0,0.3);
+z-index:1000;
+transition:0.3s;
+}
+
+.whatsapp-btn:hover{
+transform:scale(1.1);
+background-color:#1ebe5d;
+}
+.map-container{
+margin-top:20px;
+max-width:600px;
+margin-left:auto;
+margin-right:auto;
+}
+.reviews{
+background-color:white;
+padding:50px 20px;
+}
+
+.review-container{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.review{
+background:#f9f9f9;
+padding:20px;
+border-radius:10px;
+width:250px;
+box-shadow:0px 4px 10px rgba(0,0,0,0.1);
+font-style:italic;
+}
+.btn-devis{
+display:inline-block;
+margin-top:10px;
+padding:12px 25px;
+background-color:#25D366;
+color:white;
+border-radius:8px;
+font-weight:bold;
+text-decoration:none;
+transition:0.3s;
+}
+
+.btn-devis:hover{
+background-color:#1ebe5d;
+transform:scale(1.05);
+}
+.devis{
+background:white;
+padding:50px 20px;
+}
+
+.devis h2{
+color:#e60000;
+margin-bottom:30px;
+}
+
+.devis-form{
+max-width:500px;
+margin:auto;
+background:#f9f9f9;
+padding:25px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.devis-form input,
+.devis-form select,
+.devis-form textarea,
+.devis-form button{
+width:100%;
+padding:12px;
+margin-bottom:15px;
+border-radius:6px;
+border:1px solid #ccc;
+font-size:15px;
+}
+
+.devis-form button{
+background:#e60000;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+.devis-form button:hover{
+background:#b30000;
+}
+</style>
+</style>
+</head>
+<body>
+
+<nav>
+<ul>
+<li><a href="#header">Accueil</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#testimonials">Témoignages</a></li>
+<li><a href="#gallery">Galerie</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+<header id="header">
+<h1>Camion José Transport & Déménagement</h1>
+<p class="sub-title">Service rapide et sécurisé - 034 42 913 61</p>
+<a href="tel:0344291361" class="btn-call">Appeler maintenant</a>
+<a href="https://wa.me/261344291361?text=Bonjour%20je%20veux%20un%20devis" target="_blank" class="btn-devis">
+📩 Demander un devis
+</a>
+</header>
+
+<section class="services" id="services">
+<h2>Nos Services</h2>
+<div class="service-list">
+  <div class="service-item">
+    <h3>🏠 Déménagement</h3>
+    <p>Notre service de déménagement inclut <strong>3 options différentes</strong> :</p>
+    <ul class="sub-services">
+      <li>🚚 Transport simple</li>
+      <li>🤝 Transport avec manutention</li>
+      <li>📦 Déménagement complet (emballage, démontage, remontage)</li>
+    </ul>
+    <div class="slider">
+      <div class="slides">
+        <img src="manutention.jpeg" alt="Equipe manutention">
+        <img src="emballage.jpeg" alt="Emballage meubles">
+        <img src="chargement.jpeg" alt="Chargement du camion">
+      </div>
+      <button class="slider-btn prev">&#10094;</button>
+      <button class="slider-btn next">&#10095;</button>
+    </div>
+    <a href="tel:0344291361" class="btn-service">Appeler maintenant</a>
+  </div>
+
+  <div class="service-item">
+    <h3>🚛 Transport de marchandises</h3>
+    <p>Livraison rapide et fiable pour vos marchandises.</p>
+    <a href="tel:0344291361" class="btn-service">Appeler maintenant</a>
+  </div>
+
+  <div class="service-item">
+    <h3>⚡ Livraison rapide</h3>
+    <p>Service express pour vos envois urgents.</p>
+    <a href="tel:0344291361" class="btn-service">Appeler maintenant</a>
+  </div>
+</div>
+</section>
+
+<!-- --- Témoignages --- -->
+<section class="testimonials" id="testimonials">
+<h2>Témoignages de nos clients</h2>
+<div class="testimonial-videos">
+  <video controls>
+    <source src="video.mp4" type="video/mp4">
+    Votre navigateur ne supporte pas la lecture de vidéos.
+  </video>
+  <video controls>
+    <source src="video2.mp4" type="video/mp4">
+    Votre navigateur ne supporte pas la lecture de vidéos.
+  </video>
+  <video controls>
+    <source src="v3.mp4" type="video/mp4">
+    Votre navigateur ne supporte pas la lecture de vidéos.
+  </video>
+</div>
+</section>
+
+<section class="gallery" id="gallery">
+<h2>Galerie de nos camions</h2>
+<div class="gallery-grid">
+<div class="gallery-item"><img src="jok.jpeg" alt="Camion 1"></div>
+<div class="gallery-item"><img src="gomme.jpeg" alt="Camion 2"></div>
+<div class="gallery-item"><img src="DOUBLE.jpeg" alt="Camion 3"></div>
+<div class="gallery-item"><img src="410.jpeg" alt="Camion 3"></div>
+</div>
+</section>
+<section class="reviews">
+<h2>⭐ Avis de nos clients</h2>
+
+<div class="review-container">
+
+<div class="review">
+<p>"Service rapide et très professionnel, je recommande !"</p>
+<strong>⭐⭐⭐⭐⭐ - Rianaharinony Miora</strong>
+</div>
+
+<div class="review">
+<p>"Équipe sérieuse, déménagement sans problème."</p>
+<strong>⭐⭐⭐⭐⭐ - Randrianaivo Rovaniaina </strong>
+</div>
+
+<div class="review">
+<p>"Très bon service, ponctuel et efficace."</p>
+<strong>⭐⭐⭐⭐⭐ - Rakotolahy Henri Luc</strong>
+</div>
+
+</div>
+</section>
+
+<section class="devis" id="devis">
+<h2>📩 Demander un devis</h2>
+
+<div class="devis-form">
+
+<form action="https://formspree.io/f/xwvwyzoq" method="POST">
+
+<input type="text" name="nom" placeholder="Votre nom" required>
+
+<input type="tel" name="telephone" placeholder="Votre téléphone" required>
+
+<select name="service" required>
+<option value="">Choisir un service</option>
+<option>Déménagement simple</option>
+<option>Déménagement avec manutention</option>
+<option>Déménagement complet</option>
+<option>Transport de marchandises</option>
+<option>Livraison rapide</option>
+</select>
+
+<input type="text" name="depart" placeholder="Adresse de départ" required>
+
+<input type="text" name="arrivee" placeholder="Adresse d’arrivée" required>
+
+<input type="date" name="date" required>
+
+<textarea name="message" placeholder="Détails (meubles, étage, etc...)"></textarea>
+
+<button type="submit">Envoyer la demande</button>
+
+</form>
+
+</div>
+</section>
+
+<section class="contact" id="contact">
+<h2>Contactez-nous</h2>
+<p>📞 034 42 913 61</p>
+<p>✉️ camionjosedemenagement@gmail.com</p>
+<p>📍 Antananarivo, Madagascar</p>
+<p> 
+<a href="https://www.facebook.com/profile.php?id=61578163626500" target="_blank" style="display:inline-flex;align-items:center;gap:8px;">
+<img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" width="25" height="25">
+Camion José Transport & Déménagement Tana
+
+<!-- GOOGLE MAP -->
+<div class="map-container">
+<iframe 
+src="https://www.google.com/maps?q=Tanjombato+Antananarivo&output=embed"
+width="100%" 
+height="300" 
+style="border:0;border-radius:10px;" 
+allowfullscreen="" 
+loading="lazy">
+</iframe>
+</div>
+</a>
+</p>
+
+<div class="contact-form">
+<h3>Envoyez-nous un message</h3>
+<div class="confirm-message" id="confirmMessage">Merci pour votre message ! Nous vous répondrons dès que possible.</div>
+<form id="contactForm" action="https://formspree.io/f/xwvwyzoq" method="POST">
+<input type="text" name="name" placeholder="Votre nom" required>
+<input type="email" name="email" placeholder="Votre email" required>
+<textarea name="message" rows="5" placeholder="Votre message" required></textarea>
+<input type="hidden" name="_replyto" value="camionjosedemenagement@gmail.com">
+<button type="submit">Envoyer</button>
+</form>
+</div>
+</section>
+
+
+
+<script>
+// Formulaire contact
+const form = document.getElementById('contactForm');
+const messageBox = document.getElementById('confirmMessage');
+form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const formData = new FormData(form);
+    fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+    }).then(response => {
+        if(response.ok){
+            form.reset();
+            messageBox.style.display = 'block';
+            window.scrollTo({top: messageBox.offsetTop - 50, behavior:'smooth'});
+        } else { alert('Oups! Une erreur est survenue.'); }
+    }).catch(error => { alert('Oups! Une erreur est survenue.'); });
+});
+
+// Slider déménagement
+let slideIndex = 0;
+const slidesContainer = document.querySelector('.slides');
+const totalSlides = slidesContainer.children.length;
+
+function showSlide(index){
+    slideIndex = (index + totalSlides) % totalSlides;
+    slidesContainer.style.transform = `translateX(-${slideIndex * 100}%)`;
+}
+showSlide(0);
+document.querySelector('.prev').addEventListener('click', ()=> showSlide(slideIndex-1));
+document.querySelector('.next').addEventListener('click', ()=> showSlide(slideIndex+1));
+setInterval(()=> showSlide(slideIndex+1), 5000);
+</script>
+<a href="https://wa.me/261344291361" class="whatsapp-btn" target="_blank">💬</a>
+</body>
+</html>
