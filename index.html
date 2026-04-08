@@ -12,6 +12,7 @@
 /* --- RESET ET BASE --- */
 * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
 body { line-height:1.5; background:#f5f5f5; scroll-behavior: smooth; }
+
 /* --- NAVIGATION --- */
 nav {
   position: fixed;
@@ -36,14 +37,32 @@ nav ul li a {
   transition:0.3s;
 }
 nav ul li a:hover { color: yellow; }
-/* --- HEADER --- */
+
+/* --- HEADER avec image de fond --- */
 header {
-  background:#ffcccc;
+  background: url('jok.jpeg') no-repeat center center/cover;
   padding:100px 20px 60px;
   text-align:center;
   margin-top:50px;
+  color: white;
+  position: relative;
 }
-header h1 { color:#e60000; font-size:32px; margin-bottom:10px; }
+header::after {
+  content: '';
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.4);
+  z-index:0;
+}
+header h1, header .sub-title, header .btn-call {
+  position: relative;
+  z-index:1;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+}
+header h1 { font-size:32px; margin-bottom:10px; }
 header .sub-title { font-size:18px; margin-bottom:20px; }
 header .btn-call {
   display:inline-block;
@@ -53,21 +72,23 @@ header .btn-call {
   border-radius:5px;
   text-decoration:none;
 }
+
 /* --- SECTIONS --- */
 section { padding:50px 20px; background:white; margin-bottom:10px; border-radius:10px; }
 section h2 { color:#e60000; margin-bottom:20px; text-align:center; }
 section p { color:#333; margin-bottom:20px; text-align:center; }
+
 /* --- SERVICES --- */
 .service-list { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
 .service-item { background:#fff0f0; padding:20px; border-radius:10px; width:300px; text-align:center; box-shadow:0 4px 8px rgba(0,0,0,0.1); transition:0.3s; }
 .service-item:hover { transform:translateY(-5px); }
 .service-item h3 { margin-bottom:10px; }
 .sub-services { text-align:left; margin:10px 0; }
+
 /* --- SLIDER --- */
 .slider { position:relative; overflow:hidden; margin:10px 0; }
 .slides { display:flex; transition:0.5s ease-in-out; }
 .slides img { width:100%; border-radius:10px; }
-/* Boutons slider */
 .slider-btn {
   position:absolute;
   top:50%;
@@ -83,35 +104,42 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
 }
 .slider-btn.prev { left:5px; }
 .slider-btn.next { right:5px; }
+
 /* --- TESTIMONIALS --- */
 .testimonial-videos { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
 .testimonial-videos video { width:300px; height:180px; border-radius:10px; box-shadow:0 6px 12px rgba(0,0,0,0.1); transition: transform 0.3s; }
 .testimonial-videos video:hover { transform:scale(1.05); }
+
 /* --- NOS RÉALISATIONS --- */
 .realisations p { text-align:center; margin-bottom:30px; }
 .videos-container { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; }
 .videos-container video { width:300px; height:180px; border-radius:10px; box-shadow:0 6px 12px rgba(0,0,0,0.1); transition: transform 0.3s; opacity:0; }
 .videos-container video.animate { opacity:1; transform:translateY(0); transition: all 0.6s ease-in-out; }
 .videos-container video.hidden { transform:translateY(50px); }
+
 /* --- GALERIE --- */
 .gallery-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; }
 .gallery-item img { width:100%; border-radius:10px; cursor:pointer; transition:0.3s; }
 .gallery-item img:hover { transform:scale(1.05); }
+
 /* --- REVIEWS --- */
 .review-container { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
 .review { background:#fff0f0; padding:20px; border-radius:10px; width:300px; text-align:center; transition:0.3s; }
 .review:hover { transform:translateY(-5px); }
+
 /* --- DEVIS --- */
 .devis-form { max-width:500px; margin:0 auto; }
 .devis-form input, .devis-form select, .devis-form textarea, .devis-form button {
   width:100%; padding:10px; margin-bottom:10px; border-radius:5px; border:1px solid #ccc;
 }
 .devis-form button { background:#e60000; color:white; border:none; cursor:pointer; }
+
 /* --- CONTACT --- */
 .contact-form { max-width:500px; margin:20px auto; }
 .contact-form input, .contact-form textarea, .contact-form button { width:100%; padding:10px; margin-bottom:10px; border-radius:5px; border:1px solid #ccc; }
 .contact-form button { background:#e60000; color:white; border:none; cursor:pointer; }
 .confirm-message { display:none; color:green; margin-bottom:10px; text-align:center; }
+
 /* --- BOUTON DEVIS FIXE --- */
 .whatsapp-btn {
   position:fixed;
@@ -126,8 +154,10 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
   box-shadow:0 4px 8px rgba(0,0,0,0.2);
   z-index:1000;
 }
+
 /* --- MAP --- */
 .map-container iframe { border:0; border-radius:10px; width:100%; height:300px; }
+
 /* --- RESPONSIVE --- */
 @media (max-width:768px){
   .service-list { flex-direction: column; }
@@ -319,7 +349,7 @@ function animateVideos(){
   });
 }
 window.addEventListener('scroll', animateVideos);
-animateVideos(); // pour les vidéos déjà visibles
+animateVideos();
 </script>
 </body>
 </html>
