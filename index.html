@@ -40,7 +40,7 @@ nav ul li a {
 }
 nav ul li a:hover { color: yellow; }
 
-/* --- HEADER avec image de fond --- */
+/* --- HEADER --- */
 header {
   background: url('jok.jpeg') no-repeat center center/cover;
   padding:100px 20px 60px;
@@ -131,11 +131,11 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
   height:180px;
   border-radius:10px;
   box-shadow:0 6px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s, opacity 0.6s ease-in-out;
+  transition: transform 0.5s, opacity 1s ease-in-out;
   opacity:0;
   transform:translateY(50px);
 }
-.videos-container video.animate {
+.videos-container video.visible {
   opacity:1;
   transform:translateY(0);
 }
@@ -361,17 +361,9 @@ $(document).ready(function(){
   var lightbox = $('.gallery-grid a').simpleLightbox();
 });
 
-// Animation vidéos réalisations
+// Animation vidéos réalisations - affichage au chargement
 const videos = document.querySelectorAll('.videos-container video');
-function animateVideos(){
-  const triggerBottom = window.innerHeight * 0.85;
-  videos.forEach(video => {
-    const videoTop = video.getBoundingClientRect().top;
-    if(videoTop < triggerBottom){ video.classList.add('animate'); }
-  });
-}
-window.addEventListener('scroll', animateVideos);
-animateVideos();
+videos.forEach(video => { video.classList.add('visible'); });
 </script>
 </body>
 </html>
