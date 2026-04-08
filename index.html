@@ -2,338 +2,239 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<title>Camion José Transport & Déménagement - Antananarivo, Madagascar</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Camion José Transport & Déménagement</title>
+
 <style>
-/* --- RESET ET BASE --- */
-* { margin:0; padding:0; box-sizing:border-box; font-family:Arial, sans-serif; }
-body { line-height:1.5; background:#f5f5f5; }
+html { scroll-behavior: smooth; }
 
-/* --- NAVIGATION --- */
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: #e60000;
-  z-index: 1000;
-}
-nav ul {
-  list-style:none;
-  display:flex;
-  justify-content:center;
-  padding: 10px 0;
-}
-nav ul li {
-  margin: 0 15px;
-}
-nav ul li a {
-  color: white;
-  text-decoration:none;
-  font-weight:bold;
-  font-size:16px;
-  transition:0.3s;
-}
-nav ul li a:hover {
-  color: yellow;
+body{
+font-family:Arial,sans-serif;
+margin:0;
+padding:0;
+text-align:center;
+background-color:#f2f2f2;
 }
 
-/* --- HEADER --- */
-header {
-  background:#ffcccc;
-  padding:100px 20px 60px;
-  text-align:center;
-  margin-top:50px;
+/* NAVBAR */
+nav{
+position:fixed;
+top:0;
+width:100%;
+z-index:1000;
+background-color:rgba(230,0,0,0.85);
 }
-header h1 { color:#e60000; font-size:32px; margin-bottom:10px; }
-header .sub-title { font-size:18px; margin-bottom:20px; }
-header .btn-call {
-  display:inline-block;
-  background:#e60000;
-  color:white;
-  padding:10px 20px;
-  border-radius:5px;
-  text-decoration:none;
+nav ul{
+list-style:none;
+margin:0;
+padding:10px 0;
+display:flex;
+justify-content:center;
+gap:20px;
 }
-
-/* --- SECTIONS --- */
-section { 
-  padding:50px 20px; 
-  background:white; 
-  margin-bottom:10px; 
-  border-radius:10px; 
-}
-section h2 { 
-  color:#e60000; 
-  margin-bottom:20px; 
-  text-align:center; 
-  font-size: 2.2rem;
+nav ul li a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+padding:10px 20px;
 }
 
-/* Nouveau style pour les grands titres */
-.titre-principal {
-  color: #e60000;
-  text-align: center;
-  font-size: 2.4rem;
-  margin: 40px 0 15px 0;
-  font-weight: bold;
+/* HEADER */
+header{
+height:400px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+color:white;
+background:url('jok.jpeg') center/cover;
+}
+.btn-call{
+padding:12px 25px;
+background:#e60000;
+color:white;
+border-radius:8px;
+text-decoration:none;
 }
 
-/* --- SERVICES --- */
-.service-list { 
-  display:flex; 
-  flex-wrap:wrap; 
-  gap:20px; 
-  justify-content:center; 
+/* SERVICES */
+.services{background:white;padding:50px 20px;}
+.service-list{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;}
+.service-item{background:#f9f9f9;padding:20px;width:260px;border-radius:10px;}
+.btn-service{background:#e60000;color:white;padding:10px 20px;border-radius:6px;text-decoration:none;}
+
+/* SLIDER FIX */
+.slider{
+position:relative;
+max-width:250px;
+height:180px;
+overflow:hidden;
+margin:auto;
 }
-.service-item { 
-  background:#fff0f0; 
-  padding:20px; 
-  border-radius:10px; 
-  width:300px; 
-  text-align:center; 
-  box-shadow:0 4px 8px rgba(0,0,0,0.1); 
+.slides{
+display:flex;
+transition:transform 0.5s ease;
 }
-.service-item h3 { margin-bottom:10px; }
-.sub-services { text-align:left; margin:10px 0; }
-
-/* Le reste de tes styles (je les ai gardés tels quels) */
-.slider { position:relative; overflow:hidden; margin:10px 0; }
-.slides { display:flex; transition:0.5s; }
-.slides img { width:100%; border-radius:10px; }
-.slider-btn {
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  background:rgba(0,0,0,0.5);
-  color:white;
-  border:none;
-  font-size:18px;
-  padding:5px 10px;
-  cursor:pointer;
-  border-radius:5px;
+.slides img{
+width:100%;
+flex-shrink:0;
+object-fit:cover;
 }
-.slider-btn.prev { left:5px; }
-.slider-btn.next { right:5px; }
 
-.testimonial-videos { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
-.testimonial-videos video { width:300px; height:180px; border-radius:10px; }
+/* GALERIE */
+.gallery{background:white;padding:50px;}
+.gallery-grid{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;}
+.gallery-item img{width:250px;border-radius:10px;}
 
-.realisations p { text-align:center; margin-bottom:30px; }
-.videos-container { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; }
-.videos-container video {
-  width:300px;
-  height:180px;
-  border-radius:10px;
-  box-shadow:0 6px 12px rgba(0,0,0,0.1);
-  transition:0.3s;
+/* VIDEOS */
+.realisations{
+background:white;
+padding:50px 20px;
 }
-.videos-container video:hover { transform:scale(1.05); }
-
-.gallery-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; }
-.gallery-item img { width:100%; border-radius:10px; }
-
-.review-container { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
-.review { background:#fff0f0; padding:20px; border-radius:10px; width:300px; text-align:center; }
-
-.devis-form { max-width:500px; margin:0 auto; }
-.devis-form input, .devis-form select, .devis-form textarea, .devis-form button {
-  width:100%; padding:10px; margin-bottom:10px; border-radius:5px; border:1px solid #ccc;
+.videos-container{
+display:flex;
+gap:20px;
+justify-content:center;
+flex-wrap:wrap;
 }
-.devis-form button { background:#e60000; color:white; border:none; cursor:pointer; }
-
-.contact-form { max-width:500px; margin:20px auto; }
-.contact-form input, .contact-form textarea, .contact-form button { width:100%; padding:10px; margin-bottom:10px; border-radius:5px; border:1px solid #ccc; }
-.contact-form button { background:#e60000; color:white; border:none; cursor:pointer; }
-.confirm-message { display:none; color:green; margin-bottom:10px; text-align:center; }
-
-.whatsapp-btn {
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  padding:10px 15px;
-  color:white;
-  border-radius:50px;
-  text-decoration:none;
-  font-size:18px;
-  box-shadow:0 4px 8px rgba(0,0,0,0.2);
-  z-index:1000;
+.videos-container video{
+width:300px;
+border-radius:10px;
 }
-.map-container iframe { border:0; border-radius:10px; width:100%; height:300px; }
+
+/* CONTACT */
+.contact{background:#e60000;color:white;padding:50px;}
+.contact-form{background:white;color:black;padding:20px;border-radius:10px;max-width:500px;margin:auto;}
+
+/* WHATSAPP */
+.whatsapp-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+padding:15px;
+border-radius:50%;
+text-decoration:none;
+}
+
+/* DEVIS */
+.devis{padding:50px;background:white;}
+.devis-form{max-width:500px;margin:auto;}
+.devis-form input,select,textarea{
+width:100%;
+margin-bottom:10px;
+padding:10px;
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+.service-list{flex-direction:column;align-items:center;}
+}
 </style>
 </head>
+
 <body>
 
 <nav>
 <ul>
-  <li><a href="#header">Accueil</a></li>
-  <li><a href="#services">Services</a></li>
-  <li><a href="#testimonials">Témoignages</a></li>
-  <li><a href="#realisations">🎬 Réalisations</a></li>
-  <li><a href="#gallery">Galerie</a></li>
-  <li><a href="#contact">Contact</a></li>
+<li><a href="#header">Accueil</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#realisations">Nos réalisations</a></li>
+<li><a href="#gallery">Galerie</a></li>
+<li><a href="#contact">Contact</a></li>
 </ul>
 </nav>
 
 <header id="header">
-  <h1>Camion José Transport & Déménagement</h1>
-  <p class="sub-title">Service rapide et sécurisé - 034 42 913 61</p>
-  <a href="tel:0344291361" class="btn-call">Appeler maintenant</a>
+<h1>Camion José Transport & Déménagement</h1>
+<p>Service rapide - 034 42 913 61</p>
+<a href="tel:0344291361" class="btn-call">Appeler</a>
 </header>
 
-<!-- === NOUVEAU TITRE AJOUTÉ ICI === -->
-<section style="text-align:center; padding:30px 20px 10px; background:white;">
-  <h2 class="titre-principal">Nos Réalisations</h2>
-</section>
-
 <section class="services" id="services">
-  <h2>Nos Services</h2>
-  <div class="service-list">
-    <div class="service-item">
-      <h3>🏠 Déménagement</h3>
-      <p>Notre service de déménagement inclut <strong>3 options différentes</strong> :</p>
-      <ul class="sub-services">
-        <li>🚚 Transport simple</li>
-        <li>🤝 Transport avec manutention</li>
-        <li>📦 Déménagement complet (emballage, démontage, remontage)</li>
-      </ul>
-      <div class="slider">
-        <div class="slides">
-          <img src="manutention.jpeg" alt="Equipe manutention">
-          <img src="emballage.jpeg" alt="Emballage meubles">
-          <img src="chargement.jpeg" alt="Chargement du camion">
-        </div>
-        <button class="slider-btn prev">&#10094;</button>
-        <button class="slider-btn next">&#10095;</button>
-      </div>
-      <a href="tel:0344291361" class="btn-service">Appeler maintenant</a>
-    </div>
-    <div class="service-item">
-      <h3>🚛 Transport de marchandises</h3>
-      <p>Livraison rapide et fiable pour vos marchandises.</p>
-      <a href="tel:0344291361" class="btn-service">Appeler maintenant</a>
-    </div>
-    <div class="service-item">
-      <h3>⚡ Livraison rapide</h3>
-      <p>Service express pour vos envois urgents.</p>
-      <a href="tel:0344291361" class="btn-service">Appeler maintenant</a>
-    </div>
-  </div>
+<h2>Nos Services</h2>
+
+<div class="service-item">
+<h3>Déménagement</h3>
+
+<div class="slider">
+<div class="slides">
+<img src="manutention.jpeg">
+<img src="emballage.jpeg">
+<img src="chargement.jpeg">
+</div>
+</div>
+
+</div>
 </section>
 
-<!-- Le reste de ton code reste identique -->
-<section class="testimonials" id="testimonials">
-  <h2>Témoignages de nos clients</h2>
-  <div class="testimonial-videos">
-    <video controls>
-      <source src="video.mp4" type="video/mp4">
-      Votre navigateur ne supporte pas la lecture de vidéos.
-    </video>
-    <video controls>
-      <source src="video2.mp4" type="video/mp4">
-      Votre navigateur ne supporte pas la lecture de vidéos.
-    </video>
-    <video controls>
-      <source src="v3.mp4" type="video/mp4">
-      Votre navigateur ne supporte pas la lecture de vidéos.
-    </video>
-  </div>
-</section>
+<section class="realisations" id="realisations">
+<h2>Nos réalisations</h2>
 
-<section id="realisations" class="realisations">
-  <h2>🎬 Nos réalisations</h2>
-  <p>Découvrez notre équipe en pleine action lors de nos déménagements.</p>
-  <div class="videos-container">
-    <video controls>
-      <source src="demo1.mp4" type="video/mp4">
-    </video>
-    <video controls>
-      <source src="demo2.mp4" type="video/mp4">
-    </video>
-    <video controls>
-      <source src="demo3.mp4" type="video/mp4">
-    </video>
-  </div>
+<div class="videos-container">
+<video controls src="demo1.mp4"></video>
+<video controls src="demo2.mp4"></video>
+<video controls src="demo3.mp4"></video>
+</div>
+
 </section>
 
 <section class="gallery" id="gallery">
-  <h2>Galerie de nos camions</h2>
-  <div class="gallery-grid">
-    <div class="gallery-item"><img src="jok.jpeg" alt="Camion 1"></div>
-    <div class="gallery-item"><img src="gomme.jpeg" alt="Camion 2"></div>
-    <div class="gallery-item"><img src="DOUBLE.jpeg" alt="Camion 3"></div>
-    <div class="gallery-item"><img src="410.jpeg" alt="Camion 4"></div>
-  </div>
-</section>
-
-<section class="reviews">
-  <h2>⭐ Avis de nos clients</h2>
-  <div class="review-container">
-    <div class="review">
-      <p>"Service rapide et très professionnel, je recommande !"</p>
-      <strong>⭐⭐⭐⭐⭐ - Rianaharinony Miora</strong>
-    </div>
-    <div class="review">
-      <p>"Équipe sérieuse, déménagement sans problème."</p>
-      <strong>⭐⭐⭐⭐⭐ - Randrianaivo Rovaniaina </strong>
-    </div>
-    <div class="review">
-      <p>"Très bon service, ponctuel et efficace."</p>
-      <strong>⭐⭐⭐⭐⭐ - Rakotolahy Henri Luc</strong>
-    </div>
-  </div>
+<h2>Galerie</h2>
+<div class="gallery-grid">
+<img src="jok.jpeg">
+<img src="gomme.jpeg">
+<img src="DOUBLE.jpeg">
+</div>
 </section>
 
 <section class="devis" id="devis">
-  <h2>📩 Demander un devis</h2>
-  <div class="devis-form">
-    <form action="https://formspree.io/f/xwvwyzoq" method="POST">
-      <input type="text" name="nom" placeholder="Votre nom" required>
-      <input type="tel" name="telephone" placeholder="Votre téléphone" required>
-      <select name="service" required>
-        <option value="">Choisir un service</option>
-        <option>Déménagement simple</option>
-        <option>Déménagement avec manutention</option>
-        <option>Déménagement complet</option>
-        <option>Transport de marchandises</option>
-        <option>Livraison rapide</option>
-      </select>
-      <input type="text" name="depart" placeholder="Adresse de départ" required>
-      <input type="text" name="arrivee" placeholder="Adresse d’arrivée" required>
-      <input type="date" name="date" required>
-      <textarea name="message" placeholder="Détails (meubles, étage, etc...)"></textarea>
-      <button type="submit">Envoyer la demande</button>
-    </form>
-  </div>
+<h2>Demander un devis</h2>
+<form class="devis-form" action="https://formspree.io/f/xwvwyzoq" method="POST">
+<input type="text" placeholder="Nom" required>
+<input type="tel" placeholder="Téléphone" required>
+<select>
+<option>Choisir service</option>
+</select>
+<button>Envoyer</button>
+</form>
 </section>
 
 <section class="contact" id="contact">
-  <h2>Contactez-nous</h2>
-  <p>📞 034 42 913 61</p>
-  <p>✉️ camionjosedemenagement@gmail.com</p>
-  <p>📍 Antananarivo, Madagascar</p>
+<h2>Contact</h2>
+
+<p>📞 034 42 913 61</p>
+
+<p>
+<a href="https://www.facebook.com/profile.php?id=61578163626500" target="_blank">
+Facebook
+</a>
+</p>
+
+<iframe src="https://www.google.com/maps?q=Tanjombato+Antananarivo&output=embed" width="100%" height="250"></iframe>
+
 </section>
 
-<a href="#devis" class="whatsapp-btn" title="Demander un devis">📩 Devis</a>
+<a href="#devis" class="whatsapp-btn">📩</a>
 
-<!-- SCRIPTS -->
 <script>
-// Slider déménagement
-document.querySelectorAll('.slider').forEach(slider => {
-    let slideIndex = 0;
-    const slidesContainer = slider.querySelector('.slides');
-    const slides = slidesContainer.children;
-    const totalSlides = slides.length;
-    slidesContainer.style.width = `${totalSlides * 100}%`;
-    for(let i=0;i<totalSlides;i++){ slides[i].style.width = `${100 / totalSlides}%`; }
-    function showSlide(index){
-        slideIndex = (index + totalSlides) % totalSlides;
-        slidesContainer.style.transform = `translateX(-${slideIndex * (100 / totalSlides)}%)`;
-    }
-    showSlide(0);
-    slider.querySelector('.prev').addEventListener('click', ()=> showSlide(slideIndex-1));
-    slider.querySelector('.next').addEventListener('click', ()=> showSlide(slideIndex+1));
-    setInterval(()=> showSlide(slideIndex+1), 6000);
+// SLIDER CORRIGÉ
+document.querySelectorAll('.slider').forEach(slider=>{
+let index=0;
+const slides=slider.querySelector('.slides');
+const total=slides.children.length;
+
+function show(){
+slides.style.transform=`translateX(-${index*100}%)`;
+}
+
+setInterval(()=>{
+index=(index+1)%total;
+show();
+},3000);
 });
 </script>
+
 </body>
 </html>
