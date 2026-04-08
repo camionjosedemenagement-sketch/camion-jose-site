@@ -40,7 +40,7 @@ nav ul li a {
 }
 nav ul li a:hover { color: yellow; }
 
-/* --- HEADER --- */
+/* --- HEADER avec image de fond --- */
 header {
   background: url('jok.jpeg') no-repeat center center/cover;
   padding:100px 20px 60px;
@@ -115,7 +115,7 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
 /* --- NOS RÉALISATIONS --- */
 .realisations p { text-align:center; margin-bottom:30px; }
 .videos-container { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; }
-.videos-container video { width:300px; height:180px; border-radius:10px; box-shadow:0 6px 12px rgba(0,0,0,0.1); transition: transform 0.3s, opacity 0.6s; opacity:0; transform:translateY(50px); }
+.videos-container video { width:300px; height:180px; border-radius:10px; box-shadow:0 6px 12px rgba(0,0,0,0.1); transition: transform 0.3s, opacity 0.6s ease-in-out; opacity:0; transform:translateY(50px);}
 .videos-container video.animate { opacity:1; transform:translateY(0); }
 
 /* --- GALERIE --- */
@@ -135,43 +135,52 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
 }
 .devis-form button { background:#e60000; color:white; border:none; cursor:pointer; }
 
-/* --- CONTACT --- */
-.contact {
-  background-color:#f0f8ff; 
-  border-radius:15px;
-  padding:50px 20px;
-  box-shadow:0 6px 12px rgba(0,0,0,0.1);
-  text-align:center;
+/* --- CONTACT MODERNE --- */
+.contact { text-align:center; margin-top:20px; }
+.contact-row {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:15px;
+  margin-top:20px;
 }
-.contact-row { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; }
-.contact a { text-decoration:none; padding:10px 20px; border-radius:50px; font-weight:bold; font-size:16px; display:inline-flex; align-items:center; transition:0.3s; }
-.contact a img { width:24px; height:24px; margin-right:8px; }
-.contact .phone { background:#e60000; color:white; }
-.contact .phone:hover { transform: scale(1.05); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
-.contact .whatsapp { background:#25D366; color:white; animation: pulse 2s infinite; }
-.contact .whatsapp:hover { transform: scale(1.05); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
+.contact-row a {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:12px 25px;
+  border-radius:50px;
+  font-weight:bold;
+  color:white;
+  text-decoration:none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.contact-row a.phone { background:#e60000; }
+.contact-row a.email { background:#0072c6; }
+.contact-row a.whatsapp { background:#25D366; }
+.contact-row a:hover { transform: translateY(-3px) scale(1.05); box-shadow:0 6px 12px rgba(0,0,0,0.25); }
 
-/* --- BOUTON DEVIS FIXE --- */
+/* --- BOUTON DEVIS FLOTANT MODERNE --- */
 .whatsapp-btn {
   position:fixed;
   bottom:20px;
   right:20px;
-  padding:10px 15px;
+  padding:15px 22px;
+  font-size:18px;
+  background:#e60000;
   color:white;
-  background:#25D366;
   border-radius:50px;
   text-decoration:none;
-  font-size:18px;
-  box-shadow:0 4px 8px rgba(0,0,0,0.2);
-  z-index:1000;
+  font-weight:bold;
+  box-shadow:0 6px 15px rgba(0,0,0,0.3);
   animation: pulse 2s infinite;
+  z-index:1000;
 }
-
-/* --- PULSATION --- */
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+  0% { transform: scale(1); box-shadow:0 6px 15px rgba(0,0,0,0.3); }
+  50% { transform: scale(1.05); box-shadow:0 8px 18px rgba(0,0,0,0.35); }
+  100% { transform: scale(1); box-shadow:0 6px 15px rgba(0,0,0,0.3); }
 }
 
 /* --- MAP --- */
@@ -183,9 +192,8 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
   .slider-btn { font-size:16px; padding:6px 10px; }
   .gallery-grid { grid-template-columns: repeat(auto-fit,minmax(120px,1fr)); }
   .testimonial-videos video, .videos-container video { width:100%; height:auto; }
-}
-@media (max-width:500px){
-  .contact-row { flex-direction: column; gap:10px; }
+  .contact-row { flex-direction:column; }
+  .contact-row a { width:80%; justify-content:center; }
 }
 </style>
 </head>
@@ -207,7 +215,6 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
 <a href="tel:0344291361" class="btn-call">Appeler maintenant</a>
 </header>
 
-<!-- Sections Services, Témoignages, Réalisations, Galerie, Reviews, Devis (inchangées) -->
 <section class="services" id="services">
 <h2>Nos Services</h2>
 <div class="service-list">
@@ -326,16 +333,19 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
 </div>
 </section>
 
+<!-- SECTION CONTACT -->
 <section class="contact" id="contact">
 <h2>Contactez-nous</h2>
 <div class="contact-row">
-  <a href="tel:0344291361" class="phone" title="Cliquez pour appeler directement">📞 034 42 913 61</a>
-  <a href="https://wa.me/261344291361?text=Bonjour%20Camion%20José!%20Je%20voudrais%20un%20devis%20pour%20mon%20déménagement%20à%20Antananarivo." target="_blank" class="whatsapp" title="Cliquez pour discuter sur WhatsApp">
+  <a href="tel:0344291361" class="phone">📞 034 42 913 61</a>
+  <a href="mailto:camionjosedemenagement@gmail.com" class="email">✉️ camionjosedemenagement@gmail.com</a>
+  <a href="https://wa.me/261344291361?text=Bonjour%20Camion%20José!%20Je%20voudrais%20un%20devis%20pour%20mon%20déménagement%20à%20Antananarivo." target="_blank" class="whatsapp">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"> 034 42 913 61
   </a>
 </div>
 </section>
 
+<!-- BOUTON DEVIS FLOTANT -->
 <a href="#devis" class="whatsapp-btn" title="Demander un devis">📩 Devis</a>
 
 <!-- SCRIPTS -->
@@ -371,11 +381,10 @@ function animateVideos(){
   const triggerBottom = window.innerHeight * 0.85;
   videos.forEach(video => {
     const videoTop = video.getBoundingClientRect().top;
-    if(videoTop < triggerBottom){ video.classList.add('animate'); video.classList.remove('hidden'); }
+    if(videoTop < triggerBottom){ video.classList.add('animate'); }
   });
 }
 window.addEventListener('scroll', animateVideos);
 animateVideos();
 </script>
-</body>
-</html>
+</body
