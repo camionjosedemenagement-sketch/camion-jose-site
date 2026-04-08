@@ -76,12 +76,7 @@ header .btn-call {
 }
 
 /* --- SECTIONS --- */
-section {
-  padding: 80px 20px 50px;
-  background:white;
-  margin-bottom:10px;
-  border-radius:10px;
-}
+section { padding:50px 20px; background:white; margin-bottom:10px; border-radius:10px; }
 section h2 { color:#e60000; margin-bottom:20px; text-align:center; }
 section p { color:#333; margin-bottom:20px; text-align:center; }
 
@@ -91,7 +86,6 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
 .service-item:hover { transform:translateY(-5px); }
 .service-item h3 { margin-bottom:10px; }
 .sub-services { text-align:left; margin:10px 0; }
-.btn-service { display:inline-block; background:#e60000; color:white; padding:8px 15px; border-radius:5px; text-decoration:none; margin-top:10px; }
 
 /* --- SLIDER --- */
 .slider { position:relative; overflow:hidden; margin:10px 0; }
@@ -119,26 +113,10 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
 .testimonial-videos video:hover { transform:scale(1.05); }
 
 /* --- NOS RÉALISATIONS --- */
-.realisations {
-  background: #fff0f0;
-  padding:50px 20px;
-  border-radius:10px;
-}
 .realisations p { text-align:center; margin-bottom:30px; }
 .videos-container { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; }
-.videos-container video {
-  width:300px;
-  height:180px;
-  border-radius:10px;
-  box-shadow:0 6px 12px rgba(0,0,0,0.1);
-  transition: transform 0.5s, opacity 1s ease-in-out;
-  opacity:0;
-  transform:translateY(50px);
-}
-.videos-container video.visible {
-  opacity:1;
-  transform:translateY(0);
-}
+.videos-container video { width:300px; height:180px; border-radius:10px; box-shadow:0 6px 12px rgba(0,0,0,0.1); transition: transform 0.3s, opacity 0.6s; opacity:0; transform:translateY(50px); }
+.videos-container video.animate { opacity:1; transform:translateY(0); }
 
 /* --- GALERIE --- */
 .gallery-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; }
@@ -158,37 +136,46 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
 .devis-form button { background:#e60000; color:white; border:none; cursor:pointer; }
 
 /* --- CONTACT --- */
-.contact-form, .contact p { max-width:500px; margin:10px auto; text-align:center; font-size:16px; }
-.contact-form input, .contact-form textarea, .contact-form button { width:100%; padding:10px; margin-bottom:10px; border-radius:5px; border:1px solid #ccc; }
-.contact-form button { background:#e60000; color:white; border:none; cursor:pointer; }
-.confirm-message { display:none; color:green; margin-bottom:10px; text-align:center; }
+.contact {
+  background-color:#f0f8ff; 
+  border-radius:15px;
+  padding:50px 20px;
+  box-shadow:0 6px 12px rgba(0,0,0,0.1);
+  text-align:center;
+}
+.contact-row { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; }
+.contact a { text-decoration:none; padding:10px 20px; border-radius:50px; font-weight:bold; font-size:16px; display:inline-flex; align-items:center; transition:0.3s; }
+.contact a img { width:24px; height:24px; margin-right:8px; }
+.contact .phone { background:#e60000; color:white; }
+.contact .phone:hover { transform: scale(1.05); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
+.contact .whatsapp { background:#25D366; color:white; animation: pulse 2s infinite; }
+.contact .whatsapp:hover { transform: scale(1.05); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
 
-/* --- CONTACT : NUMERO ET WHATSAPP COTE A COTE --- */
-.contact .contact-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap:15px;
-  flex-wrap: wrap;
-}
-.contact .contact-row a {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
+/* --- BOUTON DEVIS FIXE --- */
+.whatsapp-btn {
+  position:fixed;
+  bottom:20px;
+  right:20px;
   padding:10px 15px;
+  color:white;
+  background:#25D366;
   border-radius:50px;
-  font-size:16px;
-  transition: transform 0.2s;
+  text-decoration:none;
+  font-size:18px;
+  box-shadow:0 4px 8px rgba(0,0,0,0.2);
+  z-index:1000;
+  animation: pulse 2s infinite;
 }
-.contact .contact-row a.phone { background-color:#e60000; }
-.contact .contact-row a.phone:hover { transform: translateY(-2px); }
-.contact .contact-row a.whatsapp {
-  background-color:#25D366;
+
+/* --- PULSATION --- */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
-.contact .contact-row a.whatsapp:hover { background-color:#1ebe5d; transform: translateY(-2px); }
-.contact .contact-row a img { width:24px; height:24px; margin-right:8px; }
+
+/* --- MAP --- */
+.map-container iframe { border:0; border-radius:10px; width:100%; height:300px; }
 
 /* --- RESPONSIVE --- */
 @media (max-width:768px){
@@ -197,11 +184,12 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
   .gallery-grid { grid-template-columns: repeat(auto-fit,minmax(120px,1fr)); }
   .testimonial-videos video, .videos-container video { width:100%; height:auto; }
 }
+@media (max-width:500px){
+  .contact-row { flex-direction: column; gap:10px; }
+}
 </style>
 </head>
 <body>
-
-<!-- NAVIGATION -->
 <nav>
 <ul>
 <li><a href="#header">Accueil</a></li>
@@ -213,34 +201,181 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
 </ul>
 </nav>
 
-<!-- HEADER -->
 <header id="header">
 <h1>Camion José Transport & Déménagement</h1>
-<p class="sub-title">Service rapide et sécurisé - <a href="tel:0344291361" style="color:white; text-decoration:underline;">034 42 913 61</a></p>
+<p class="sub-title">Service rapide et sécurisé - 034 42 913 61</p>
 <a href="tel:0344291361" class="btn-call">Appeler maintenant</a>
 </header>
 
-<!-- SECTION CONTACT -->
+<!-- Sections Services, Témoignages, Réalisations, Galerie, Reviews, Devis (inchangées) -->
+<section class="services" id="services">
+<h2>Nos Services</h2>
+<div class="service-list">
+  <div class="service-item">
+    <h3>🏠 Déménagement</h3>
+    <p>Notre service de déménagement inclut <strong>3 options différentes</strong> :</p>
+    <ul class="sub-services">
+      <li>🚚 Transport simple</li>
+      <li>🤝 Transport avec manutention</li>
+      <li>📦 Déménagement complet (emballage, démontage, remontage)</li>
+    </ul>
+    <div class="slider">
+      <div class="slides">
+        <img src="manutention.jpeg" alt="Equipe manutention">
+        <img src="emballage.jpeg" alt="Emballage meubles">
+        <img src="chargement.jpeg" alt="Chargement du camion">
+      </div>
+      <button class="slider-btn prev">&#10094;</button>
+      <button class="slider-btn next">&#10095;</button>
+    </div>
+    <a href="tel:0344291361" class="btn-service">Appeler maintenant</a>
+  </div>
+  <div class="service-item">
+    <h3>🚛 Transport de marchandises</h3>
+    <p>Livraison rapide et fiable pour vos marchandises.</p>
+    <a href="tel:0344291361" class="btn-service">Appeler maintenant</a>
+  </div>
+  <div class="service-item">
+    <h3>⚡ Livraison rapide</h3>
+    <p>Service express pour vos envois urgents.</p>
+    <a href="tel:0344291361" class="btn-service">Appeler maintenant</a>
+  </div>
+</div>
+</section>
+
+<section class="testimonials" id="testimonials">
+<h2>Témoignages de nos clients</h2>
+<div class="testimonial-videos">
+  <video controls>
+    <source src="video.mp4" type="video/mp4">
+  </video>
+  <video controls>
+    <source src="video2.mp4" type="video/mp4">
+  </video>
+  <video controls>
+    <source src="v3.mp4" type="video/mp4">
+  </video>
+</div>
+</section>
+
+<section id="realisations" class="realisations">
+<h2>🎬 Nos réalisations</h2>
+<p>Découvrez notre équipe en pleine action lors de nos déménagements.</p>
+<div class="videos-container">
+  <video class="hidden" controls>
+    <source src="complet.mp4" type="video/mp4">
+  </video>
+  <video class="hidden" controls>
+    <source src="vid.mp4" type="video/mp4">
+  </video>
+  <video class="hidden" controls>
+    <source src="vdemballage.mp4" type="video/mp4">
+  </video>
+</div>
+</section>
+
+<section class="gallery" id="gallery">
+<h2>Galerie de nos camions</h2>
+<div class="gallery-grid">
+  <div class="gallery-item"><a href="jok.jpeg"><img src="jok.jpeg" alt="Camion 1"></a></div>
+  <div class="gallery-item"><a href="gomme.jpeg"><img src="gomme.jpeg" alt="Camion 2"></a></div>
+  <div class="gallery-item"><a href="DOUBLE.jpeg"><img src="DOUBLE.jpeg" alt="Camion 3"></a></div>
+  <div class="gallery-item"><a href="410.jpeg"><img src="410.jpeg" alt="Camion 4"></a></div>
+</div>
+</section>
+
+<section class="reviews">
+<h2>⭐ Avis de nos clients</h2>
+<div class="review-container">
+<div class="review">
+<p>"Service rapide et très professionnel, je recommande !"</p>
+<strong>⭐⭐⭐⭐⭐ - Rianaharinony Miora</strong>
+</div>
+<div class="review">
+<p>"Équipe sérieuse, déménagement sans problème."</p>
+<strong>⭐⭐⭐⭐⭐ - Randrianaivo Rovaniaina </strong>
+</div>
+<div class="review">
+<p>"Très bon service, ponctuel et efficace."</p>
+<strong>⭐⭐⭐⭐⭐ - Rakotolahy Henri Luc</strong>
+</div>
+</div>
+</section>
+
+<section class="devis" id="devis">
+<h2>📩 Demander un devis</h2>
+<div class="devis-form">
+<form action="https://formspree.io/f/xwvwyzoq" method="POST">
+<input type="text" name="nom" placeholder="Votre nom" required>
+<input type="tel" name="telephone" placeholder="Votre téléphone" required>
+<select name="service" required>
+<option value="">Choisir un service</option>
+<option>Déménagement simple</option>
+<option>Déménagement avec manutention</option>
+<option>Déménagement complet</option>
+<option>Transport de marchandises</option>
+<option>Livraison rapide</option>
+</select>
+<input type="text" name="depart" placeholder="Adresse de départ" required>
+<input type="text" name="arrivee" placeholder="Adresse d’arrivée" required>
+<input type="date" name="date" required>
+<textarea name="message" placeholder="Détails (meubles, étage, etc...)"></textarea>
+<button type="submit">Envoyer la demande</button>
+<div class="confirm-message">Votre demande a été envoyée avec succès !</div>
+</form>
+</div>
+</section>
+
 <section class="contact" id="contact">
 <h2>Contactez-nous</h2>
-<p>✉️ camionjosedemenagement@gmail.com</p>
-<p>📍 Antananarivo, Madagascar</p>
-
-<!-- NUMERO ET WHATSAPP COTE A COTE -->
 <div class="contact-row">
-  <a href="tel:0344291361" class="phone">📞 034 42 913 61</a>
-  <a href="https://wa.me/261344291361?text=Bonjour%20!%20Je%20souhaite%20contacter%20Camion%20José%20Transport%20et%20Déménagement." target="_blank" class="whatsapp">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo">
-    034 42 913 61 - WhatsApp
+  <a href="tel:0344291361" class="phone" title="Cliquez pour appeler directement">📞 034 42 913 61</a>
+  <a href="https://wa.me/261344291361?text=Bonjour%20Camion%20José!%20Je%20voudrais%20un%20devis%20pour%20mon%20déménagement%20à%20Antananarivo." target="_blank" class="whatsapp" title="Cliquez pour discuter sur WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"> 034 42 913 61
   </a>
 </div>
 </section>
+
+<a href="#devis" class="whatsapp-btn" title="Demander un devis">📩 Devis</a>
 
 <!-- SCRIPTS -->
 <script src="https://cdn.jsdelivr.net/npm/simplelightbox/dist/simple-lightbox.jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-// Ici tu peux garder tous les autres scripts (slider, lightbox, vidéos réalisations) si tu veux
+// Slider déménagement
+document.querySelectorAll('.slider').forEach(slider => {
+    let slideIndex = 0;
+    const slidesContainer = slider.querySelector('.slides');
+    const slides = slidesContainer.children;
+    const totalSlides = slides.length;
+    slidesContainer.style.width = `${totalSlides * 100}%`;
+    for(let i=0;i<totalSlides;i++){ slides[i].style.width = `${100 / totalSlides}%`; }
+    function showSlide(index){
+        slideIndex = (index + totalSlides) % totalSlides;
+        slidesContainer.style.transform = `translateX(-${slideIndex * (100 / totalSlides)}%)`;
+    }
+    showSlide(0);
+    slider.querySelector('.prev').addEventListener('click', ()=> showSlide(slideIndex-1));
+    slider.querySelector('.next').addEventListener('click', ()=> showSlide(slideIndex+1));
+    setInterval(()=> showSlide(slideIndex+1), 6000);
+});
+
+// Lightbox galerie
+$(document).ready(function(){
+  var lightbox = $('.gallery-grid a').simpleLightbox();
+});
+
+// Animation vidéos réalisations au scroll
+const videos = document.querySelectorAll('.videos-container video');
+function animateVideos(){
+  const triggerBottom = window.innerHeight * 0.85;
+  videos.forEach(video => {
+    const videoTop = video.getBoundingClientRect().top;
+    if(videoTop < triggerBottom){ video.classList.add('animate'); video.classList.remove('hidden'); }
+  });
+}
+window.addEventListener('scroll', animateVideos);
+animateVideos();
 </script>
 </body>
 </html>
