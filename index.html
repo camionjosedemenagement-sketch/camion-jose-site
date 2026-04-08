@@ -91,6 +91,7 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
 .service-item:hover { transform:translateY(-5px); }
 .service-item h3 { margin-bottom:10px; }
 .sub-services { text-align:left; margin:10px 0; }
+.btn-service { display:inline-block; background:#e60000; color:white; padding:8px 15px; border-radius:5px; text-decoration:none; margin-top:10px; }
 
 /* --- SLIDER --- */
 .slider { position:relative; overflow:hidden; margin:10px 0; }
@@ -176,33 +177,11 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
   transition: background 0.3s, transform 0.2s;
   box-shadow:0 4px 8px rgba(0,0,0,0.2);
 }
-.facebook-btn img {
-  width:24px;
-  height:24px;
-  margin-right:8px;
-}
-.facebook-btn:hover {
-  background-color:#0f5bb5;
-  transform: translateY(-2px);
-}
+.facebook-btn img { width:24px; height:24px; margin-right:8px; }
+.facebook-btn:hover { background-color:#0f5bb5; transform: translateY(-2px); }
 
 /* --- BOUTON DEVIS FIXE --- */
-.whatsapp-btn {
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  padding:10px 15px;
-  color:white;
-  background:#25D366;
-  border-radius:50px;
-  text-decoration:none;
-  font-size:18px;
-  box-shadow:0 4px 8px rgba(0,0,0,0.2);
-  z-index:1000;
-}
-
-/* --- MAP --- */
-.map-container iframe { border:0; border-radius:10px; width:100%; height:300px; }
+.whatsapp-btn { position:fixed; bottom:20px; right:20px; padding:10px 15px; color:white; background:#25D366; border-radius:50px; text-decoration:none; font-size:18px; box-shadow:0 4px 8px rgba(0,0,0,0.2); z-index:1000; }
 
 /* --- RESPONSIVE --- */
 @media (max-width:768px){
@@ -214,6 +193,8 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
 </style>
 </head>
 <body>
+
+<!-- NAVIGATION -->
 <nav>
 <ul>
 <li><a href="#header">Accueil</a></li>
@@ -225,31 +206,135 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
 </ul>
 </nav>
 
+<!-- HEADER -->
 <header id="header">
 <h1>Camion José Transport & Déménagement</h1>
 <p class="sub-title">Service rapide et sécurisé - <a href="tel:0344291361" style="color:white; text-decoration:underline;">034 42 913 61</a></p>
 <a href="tel:0344291361" class="btn-call">Appeler maintenant</a>
 </header>
 
-<!-- Sections Services, Testimonials, Réalisations, Galerie, Reviews, Devis restent inchangées -->
-<!-- Section Contact mise à jour avec lien tel: -->
+<!-- SERVICES -->
+<section class="services" id="services">
+<h2>Nos Services</h2>
+<div class="service-list">
+<div class="service-item">
+<h3>🏠 Déménagement</h3>
+<p>Notre service de déménagement inclut <strong>3 options différentes</strong> :</p>
+<ul class="sub-services">
+<li>🚚 Transport simple</li>
+<li>🤝 Transport avec manutention</li>
+<li>📦 Déménagement complet (emballage, démontage, remontage)</li>
+</ul>
+<div class="slider">
+<div class="slides">
+<img src="manutention.jpeg" alt="Equipe manutention">
+<img src="emballage.jpeg" alt="Emballage meubles">
+<img src="chargement.jpeg" alt="Chargement du camion">
+</div>
+<button class="slider-btn prev">&#10094;</button>
+<button class="slider-btn next">&#10095;</button>
+</div>
+<a href="tel:0344291361" class="btn-service">Appeler maintenant</a>
+</div>
+
+<div class="service-item">
+<h3>🚛 Transport de marchandises</h3>
+<p>Livraison rapide et fiable pour vos marchandises.</p>
+<a href="tel:0344291361" class="btn-service">Appeler maintenant</a>
+</div>
+
+<div class="service-item">
+<h3>⚡ Livraison rapide</h3>
+<p>Service express pour vos envois urgents.</p>
+<a href="tel:0344291361" class="btn-service">Appeler maintenant</a>
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+<h2>Témoignages de nos clients</h2>
+<div class="testimonial-videos">
+<video controls><source src="video.mp4" type="video/mp4"></video>
+<video controls><source src="video2.mp4" type="video/mp4"></video>
+<video controls><source src="v3.mp4" type="video/mp4"></video>
+</div>
+</section>
+
+<!-- NOS RÉALISATIONS -->
+<section id="realisations" class="realisations">
+<h2>🎬 Nos réalisations</h2>
+<p>Découvrez notre équipe en pleine action lors de nos déménagements.</p>
+<div class="videos-container">
+<video class="hidden" controls><source src="complet.mp4" type="video/mp4"></video>
+<video class="hidden" controls><source src="vid.mp4" type="video/mp4"></video>
+<video class="hidden" controls><source src="vdemballage.mp4" type="video/mp4"></video>
+</div>
+</section>
+
+<!-- GALERIE -->
+<section class="gallery" id="gallery">
+<h2>Galerie de nos camions</h2>
+<div class="gallery-grid">
+<div class="gallery-item"><a href="jok.jpeg"><img src="jok.jpeg" alt="Camion 1"></a></div>
+<div class="gallery-item"><a href="gomme.jpeg"><img src="gomme.jpeg" alt="Camion 2"></a></div>
+<div class="gallery-item"><a href="DOUBLE.jpeg"><img src="DOUBLE.jpeg" alt="Camion 3"></a></div>
+<div class="gallery-item"><a href="410.jpeg"><img src="410.jpeg" alt="Camion 4"></a></div>
+</div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews">
+<h2>⭐ Avis de nos clients</h2>
+<div class="review-container">
+<div class="review"><p>"Service rapide et très professionnel, je recommande !"</p><strong>⭐⭐⭐⭐⭐ - Rianaharinony Miora</strong></div>
+<div class="review"><p>"Équipe sérieuse, déménagement sans problème."</p><strong>⭐⭐⭐⭐⭐ - Randrianaivo Rovaniaina </strong></div>
+<div class="review"><p>"Très bon service, ponctuel et efficace."</p><strong>⭐⭐⭐⭐⭐ - Rakotolahy Henri Luc</strong></div>
+</div>
+</section>
+
+<!-- DEVIS -->
+<section class="devis" id="devis">
+<h2>📩 Demander un devis</h2>
+<div class="devis-form">
+<form action="https://formspree.io/f/xwvwyzoq" method="POST">
+<input type="text" name="nom" placeholder="Votre nom" required>
+<input type="tel" name="telephone" placeholder="Votre téléphone" required>
+<select name="service" required>
+<option value="">Choisir un service</option>
+<option>Déménagement simple</option>
+<option>Déménagement avec manutention</option>
+<option>Déménagement complet</option>
+<option>Transport de marchandises</option>
+<option>Livraison rapide</option>
+</select>
+<input type="text" name="depart" placeholder="Adresse de départ" required>
+<input type="text" name="arrivee" placeholder="Adresse d’arrivée" required>
+<input type="date" name="date" required>
+<textarea name="message" placeholder="Détails (meubles, étage, etc...)"></textarea>
+<button type="submit">Envoyer la demande</button>
+<div class="confirm-message">Votre demande a été envoyée avec succès !</div>
+</form>
+</div>
+</section>
+
+<!-- CONTACT -->
 <section class="contact" id="contact">
 <h2>Contactez-nous</h2>
 <p>📞 <a href="tel:0344291361" style="color:#e60000; font-weight:bold; text-decoration:none;">034 42 913 61</a></p>
 <p>✉️ camionjosedemenagement@gmail.com</p>
 <p>📍 Antananarivo, Madagascar</p>
-
 <p style="text-align:center; margin-top:10px;">
-  <a href="https://www.facebook.com/profile.php?id=61578163626500" target="_blank" class="facebook-btn">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_(2019).png" alt="Facebook">
-    Camion José - transport & Déménagement Tana
-  </a>
+<a href="https://www.facebook.com/profile.php?id=61578163626500" target="_blank" class="facebook-btn">
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_(2019).png" alt="Facebook">
+Camion José - transport & Déménagement Tana
+</a>
 </p>
 </section>
 
 <a href="#devis" class="whatsapp-btn" title="Demander un devis">📩 Devis</a>
 
-<!-- Scripts Slider, Lightbox, Animation vidéos -->
+<!-- SCRIPTS -->
 <script src="https://cdn.jsdelivr.net/npm/simplelightbox/dist/simple-lightbox.jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
