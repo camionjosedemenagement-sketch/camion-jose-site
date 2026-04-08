@@ -57,33 +57,21 @@ header::after {
   background: rgba(0,0,0,0.4);
   z-index:0;
 }
-header h1, header .sub-title, header .btn-call, header .btn-facebook {
+header h1, header .sub-title, header .btn-call {
   position: relative;
   z-index:1;
   text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
 }
 header h1 { font-size:32px; margin-bottom:10px; }
 header .sub-title { font-size:18px; margin-bottom:20px; }
-header .btn-call, header .btn-facebook {
+header .btn-call {
   display:inline-block;
+  background:#e60000;
+  color:white;
   padding:10px 20px;
   border-radius:5px;
   text-decoration:none;
-  margin: 0 5px;
-  font-weight:600;
-  transition:0.3s;
 }
-header .btn-call { background:#e60000; color:white; }
-header .btn-call:hover { background:#b20000; }
-header .btn-facebook {
-  background:#1877F2;
-  color:white;
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-header .btn-facebook img { width:20px; height:20px; }
-header .btn-facebook:hover { background:#145dbf; }
 
 /* --- SECTIONS --- */
 section { padding:50px 20px; background:white; margin-bottom:10px; border-radius:10px; }
@@ -147,16 +135,24 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
 .devis-form button { background:#e60000; color:white; border:none; cursor:pointer; }
 
 /* --- CONTACT --- */
-.contact p, .contact a { margin:5px 0; text-align:center; color:#333; text-decoration:none; font-weight:600; }
-.contact-facebook {
-  display:flex;
+.contact-form, .contact p { max-width:500px; margin:10px auto; text-align:center; font-size:16px; }
+.contact-form input, .contact-form textarea, .contact-form button { width:100%; padding:10px; margin-bottom:10px; border-radius:5px; border:1px solid #ccc; }
+.contact-form button { background:#e60000; color:white; border:none; cursor:pointer; }
+.confirm-message { display:none; color:green; margin-bottom:10px; text-align:center; }
+
+/* --- FACEBOOK CONTACT --- */
+.contact a.facebook-link {
+  display:inline-flex;
   align-items:center;
-  justify-content:center;
-  gap:10px;
+  color:#1877F2;
+  text-decoration:none;
+  font-weight:bold;
   font-size:16px;
-  margin-top:10px;
+  margin-top:5px;
+  transition:0.3s;
 }
-.contact-facebook img { width:24px; height:24px; }
+.contact a.facebook-link:hover { color:#0f5bb5; }
+.contact a.facebook-link img { width:24px; height:24px; margin-right:8px; }
 
 /* --- BOUTON DEVIS FIXE --- */
 .whatsapp-btn {
@@ -182,13 +178,10 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
   .slider-btn { font-size:16px; padding:6px 10px; }
   .gallery-grid { grid-template-columns: repeat(auto-fit,minmax(120px,1fr)); }
   .testimonial-videos video, .videos-container video { width:100%; height:auto; }
-  header .btn-call, header .btn-facebook { margin:5px 2px; }
 }
 </style>
 </head>
 <body>
-
-<!-- NAVIGATION -->
 <nav>
 <ul>
 <li><a href="#header">Accueil</a></li>
@@ -200,17 +193,12 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
 </ul>
 </nav>
 
-<!-- HEADER -->
 <header id="header">
 <h1>Camion José Transport & Déménagement</h1>
 <p class="sub-title">Service rapide et sécurisé - 034 42 913 61</p>
 <a href="tel:0344291361" class="btn-call">Appeler maintenant</a>
-<a href="https://www.facebook.com/profile.php?id=61578163626500" target="_blank" class="btn-facebook">
-<img src="https://cdn-icons-png.flaticon.com/512/145/145802.png" alt="Facebook"> Facebook
-</a>
 </header>
 
-<!-- SERVICES -->
 <section class="services" id="services">
 <h2>Nos Services</h2>
 <div class="service-list">
@@ -246,7 +234,6 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
 </div>
 </section>
 
-<!-- TESTIMONIALS -->
 <section class="testimonials" id="testimonials">
 <h2>Témoignages de nos clients</h2>
 <div class="testimonial-videos">
@@ -262,29 +249,32 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
 </div>
 </section>
 
-<!-- NOS REALISATIONS -->
 <section id="realisations" class="realisations">
 <h2>🎬 Nos réalisations</h2>
 <p>Découvrez notre équipe en pleine action lors de nos déménagements.</p>
 <div class="videos-container">
-  <video controls class="hidden"><source src="complet.mp4" type="video/mp4"></video>
-  <video controls class="hidden"><source src="vid.mp4" type="video/mp4"></video>
-  <video controls class="hidden"><source src="vdemballage.mp4" type="video/mp4"></video>
+  <video class="hidden" controls>
+    <source src="complet.mp4" type="video/mp4">
+  </video>
+  <video class="hidden" controls>
+    <source src="vid.mp4" type="video/mp4">
+  </video>
+  <video class="hidden" controls>
+    <source src="vdemballage.mp4" type="video/mp4">
+  </video>
 </div>
 </section>
 
-<!-- GALERIE -->
 <section class="gallery" id="gallery">
 <h2>Galerie de nos camions</h2>
 <div class="gallery-grid">
-<div class="gallery-item"><a href="jok.jpeg"><img src="jok.jpeg" alt="Camion 1"></a></div>
-<div class="gallery-item"><a href="gomme.jpeg"><img src="gomme.jpeg" alt="Camion 2"></a></div>
-<div class="gallery-item"><a href="DOUBLE.jpeg"><img src="DOUBLE.jpeg" alt="Camion 3"></a></div>
-<div class="gallery-item"><a href="410.jpeg"><img src="410.jpeg" alt="Camion 4"></a></div>
+  <div class="gallery-item"><a href="jok.jpeg"><img src="jok.jpeg" alt="Camion 1"></a></div>
+  <div class="gallery-item"><a href="gomme.jpeg"><img src="gomme.jpeg" alt="Camion 2"></a></div>
+  <div class="gallery-item"><a href="DOUBLE.jpeg"><img src="DOUBLE.jpeg" alt="Camion 3"></a></div>
+  <div class="gallery-item"><a href="410.jpeg"><img src="410.jpeg" alt="Camion 4"></a></div>
 </div>
 </section>
 
-<!-- REVIEWS -->
 <section class="reviews">
 <h2>⭐ Avis de nos clients</h2>
 <div class="review-container">
@@ -303,7 +293,6 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
 </div>
 </section>
 
-<!-- DEVIS -->
 <section class="devis" id="devis">
 <h2>📩 Demander un devis</h2>
 <div class="devis-form">
@@ -323,27 +312,29 @@ section p { color:#333; margin-bottom:20px; text-align:center; }
 <input type="date" name="date" required>
 <textarea name="message" placeholder="Détails (meubles, étage, etc...)"></textarea>
 <button type="submit">Envoyer la demande</button>
+<div class="confirm-message">Votre demande a été envoyée avec succès !</div>
 </form>
 </div>
 </section>
 
-<!-- CONTACT -->
 <section class="contact" id="contact">
 <h2>Contactez-nous</h2>
 <p>📞 034 42 913 61</p>
 <p>✉️ camionjosedemenagement@gmail.com</p>
 <p>📍 Antananarivo, Madagascar</p>
-<div class="contact-facebook">
-<img src="https://cdn-icons-png.flaticon.com/512/145/145802.png" alt="Facebook">
-<a href="https://www.facebook.com/profile.php?id=61578163626500" target="_blank">Camion José Transport & Déménagement</a>
-</div>
+<!-- Lien Facebook avec logo -->
+<p>
+  <a href="https://www.facebook.com/profile.php?id=61578163626500" target="_blank" class="facebook-link">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_(2019).png" alt="Facebook"> Camion José Shop
+  </a>
+</p>
 </section>
 
-<!-- BOUTON DEVIS FIXE -->
 <a href="#devis" class="whatsapp-btn" title="Demander un devis">📩 Devis</a>
 
 <!-- SCRIPTS -->
-<script src="https://cdn.jsdelivr.net/npm/simplelightbox/dist/simple-lightbox.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/simplelightbox/dist/simple-lightbox.jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 // Slider déménagement
 document.querySelectorAll('.slider').forEach(slider => {
@@ -364,18 +355,21 @@ document.querySelectorAll('.slider').forEach(slider => {
 });
 
 // Lightbox galerie
-var lightbox = new SimpleLightbox('.gallery-grid a', { /* options */ });
+$(document).ready(function(){
+  var lightbox = $('.gallery-grid a').simpleLightbox();
+});
 
-// Animation vidéos réalisations
+// Animation vidéos réalisations au scroll
 const videos = document.querySelectorAll('.videos-container video');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('animate');
-    }
+function animateVideos(){
+  const triggerBottom = window.innerHeight * 0.85;
+  videos.forEach(video => {
+    const videoTop = video.getBoundingClientRect().top;
+    if(videoTop < triggerBottom){ video.classList.add('animate'); video.classList.remove('hidden'); }
   });
-}, { threshold: 0.2 });
-videos.forEach(video => observer.observe(video));
+}
+window.addEventListener('scroll', animateVideos);
+animateVideos();
 </script>
 </body>
 </html>
